@@ -10,7 +10,7 @@ def weather_request():
         'M': '',
         'lang': 'ru'
     }
-    forecast = requests.get(url, params=weather_parameters).text
+    forecast = f'Weather forecast: {requests.get(url, params=weather_parameters).text}'
     print(forecast)
     
 
