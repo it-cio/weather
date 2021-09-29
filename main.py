@@ -10,8 +10,8 @@ def weather_request():
         'M': '',
         'lang': 'ru'
     }
-    weather = requests.get(url, params=weather_parameters).text
-    print(weather)
+    forecast = requests.get(url, params=weather_parameters).text
+    print(forecast)
     
 
 if __name__ == '__main__':
