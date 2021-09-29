@@ -12,7 +12,5 @@ def weather_request():
     }
     forecast = f'Weather forecast: {requests.get(url, params=weather_parameters).text}'
     print(forecast)
-    
+    return forecast
 
-if __name__ == '__main__':
-    weather_request()
