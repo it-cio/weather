@@ -2,7 +2,7 @@ import aiohttp
 import asyncio
 
 
-async def weather_request(greet):
+async def weather_request():
     async with aiohttp.ClientSession() as session:
         city = 'Sochi'  # Enter the name of your city here
         url = f'https://wttr.in/{city}'
@@ -15,8 +15,8 @@ async def weather_request(greet):
         }
         async with session.get(url, params=weather_parameters, ssl=False) as response:
             forecast = await response.text() if response.status == 200 else f'Cannot connect to host: {url}'
-            print(greet + forecast)
+            print(forecast)
             return forecast
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(weather_request('Weather forecast: '))
+loop.run_until_complete(weather_request())
