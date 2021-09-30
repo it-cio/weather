@@ -4,7 +4,8 @@ import asyncio
 
 async def weather_request():
     async with aiohttp.ClientSession() as session:
-        url = 'https://wttr.in/Sochi'  # Enter the name of your city here
+        city = 'Sochi'  # Enter the name of your city here
+        url = f'https://wttr.in/{city}'
         weather_parameters = {
             'format': 2,
             '0': '',
