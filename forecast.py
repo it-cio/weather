@@ -13,10 +13,15 @@ async def weather_request():
             'M': '',
             'lang': 'ru'
         }
-        async with session.get(url, params=weather_parameters, ssl=False) as response:
-            forecast = await response.text() if response.status == 200 else f'Cannot connect to host: {url}'
-            # print(f'Weather forecast {forecast} in {city}')
-            return forecast
+        try:
+            async with session.get(url, params=weather_parameters, ssl=False) as response:
+                forecast = await response.text() if response.status == 200 else f'Cannot connect to host: {url}'
+                # print(f'Weather forecast {forecast} in {city}')
+                return forecast
 
-loop = asyncio.get_event_loop()
+        except Exception as ex:
+            print(f"weather_module: {ex}")
+
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
 loop.run_until_complete(weather_request())
