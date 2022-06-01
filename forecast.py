@@ -22,6 +22,11 @@ async def weather_request():
         except Exception as ex:
             print(f"weather_module: {ex}")
 
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-loop.run_until_complete(weather_request())
+
+async def request():
+    task = asyncio.create_task(weather_request())
+    await task
+    await asyncio.sleep(0.1)
+
+
+asyncio.run(request())
